@@ -46,7 +46,13 @@ LABEL license='SPDX-License-Identifier: Apache-2.0' \
 Copyright (c) 2019: Intel Corporation'
 
 # for pg_isready to check when kong-db is ready
-RUN apk add postgresql-client
+RUN apk add postgresql-client \
+  # Fix for https://snyk.io/vuln/SNYK-ALPINE312-JQ-588886
+  && apk del jq \
+  && apk upgrade \
+  && wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O /tmp/jq-linux64 \
+  && chmod a+x /tmp/jq-linux64 \
+  && mv /tmp/jq-linux64 /usr/bin/jq
 
 # Make sure the default directories are created for consul
 RUN mkdir -p /consul/scripts && mkdir -p /consul/config
