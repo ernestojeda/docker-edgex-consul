@@ -16,6 +16,6 @@
 
 edgeXBuildDocker (
     project: 'docker-edgex-consul',
-    dockerImageName: 'docker-edgex-consul',
+    dockerImageName: 'edgex-consul',
     semver: true
 )
