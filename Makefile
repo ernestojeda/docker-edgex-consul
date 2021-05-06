@@ -41,6 +41,6 @@ edgex-consul:
 	 docker build \
 		-f Dockerfile \
 		--label "git_sha=$(GIT_SHA)" \
-		-t edgexfoundry/docker-edgex-consul:$(GIT_SHA) \
-		-t edgexfoundry/docker-edgex-consul:$(DOCKER_TAG) \
+		-t edgexfoundry/edgex-consul:$(GIT_SHA) \
+		-t edgexfoundry/edgex-consul:$(DOCKER_TAG) \
 		.
